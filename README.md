@@ -1,6 +1,7 @@
 # Project Title: Marketplace E-commerce
 # Description: A simple e-commerce marketplace built with HTML and Bootstrap.
 This project is a simple e-commerce marketplace built with HTML and Bootstrap. It includes a homepage, product listing page, product details page, and a shopping cart page. The project is designed to be responsive and user-friendly, making it easy for users to navigate and find products.
+
 # Project Specification:
 The purpose of this project is to create a simple e-commerce marketplace built in linux environment, staged and pushed to Github using the gitbash command line interface. This in turn will be hosted on AWS EC2 instance.
 
@@ -36,7 +37,6 @@ ls -lh
 ![](./img/04.png)
 
 What the above command does is to list the files in the current directory in a human-readable format, showing file sizes in a more understandable way (e.g., KB, MB). The `-l` option provides a detailed listing, while the `-h` option makes the file sizes easier to read.
-
 
 6. Edited the `index.html` file using the vscode editor. You can use the `code` command to open the file in Visual Studio Code.
 ```bash
@@ -311,7 +311,91 @@ The `sudo cp -r /path/to/your/cloned/repo/* /var/www/html/` command copies all f
 sudo systemctl reload apache2
 ```
 
-
 4. Open a web browser and enter the public IP address of your EC2 instance to access your updated e-commerce site.
+
+![](./img/45.png)
+
+The above image shows the updated e-commerce site after deploying the changes to the production server on AWS. You can verify that the new feature or bug fix is working as expected.
+
+## Troubleshooting and Challenges experienced:
+1. Setting up the SSH key for GitHub access was a bit tricky, but I followed the instructions provided by GitHub and was able to successfully add the key to my account.
+2. I encountered an issue with the Apache web server not starting due to a port conflict with Nginx. I had to stop the Nginx service and then start Apache again.
+3. I had to ensure that the security group settings for my EC2 instance allowed HTTP traffic on port 80. I updated the inbound rules in the AWS console to allow traffic from anywhere (0,0,0,0/0) on port 80.)
+4. I had to make sure that the public IP address of my EC2 instance was accessible from the internet. I used the public IPv4 address to access my e-commerce site in the web browser.
+5. I had to ensure that the Apache web server was properly configured to serve the HTML files from the `/var/www/html/` directory. I had to copy the files from my cloned repository to this directory.
+6. I had to ensure that the permissions for the `/var/www/html/` directory were set correctly so that the Apache web server could read the files. I used the `sudo chown -R www-data:www-data /var/www/html/` command to set the ownership of the directory to the Apache user and group.
+7. I had to ensure that the HTML files were properly formatted and included all necessary dependencies (CSS, JavaScript, images) for the e-commerce site to function correctly.
+8. I had to ensure that the changes made in the `development` branch were properly merged into the `main` branch before deploying to the production server. I followed the Git workflow for creating pull requests and merging branches.
+9. I had to ensure that the Apache web server was reloaded after making changes to the HTML files to apply the updates. I used the `sudo systemctl reload apache2` command to do this.
+10. I had to ensure that the cloned repository on the EC2 instance was up to date with the latest changes from the GitHub repository. I used the `git pull origin main` command to fetch and merge the latest changes.
+11. I had to ensure that the cloned repository on the EC2 instance was properly configured with the correct remote URL for GitHub. I used the `git remote -v` command to check the remote URL and updated it if necessary using the `git remote set-url origin <new-url>` command.
+
+## Conclusion:
+This project demonstrates the process of creating a simple e-commerce marketplace using HTML and Bootstrap, deploying it to an AWS EC2 instance, and implementing a CI/CD workflow using Git and GitHub. The steps outlined in this document provide a clear guide for setting up the project, making changes, and deploying updates to the production server. By following these steps, you can successfully create and manage an e-commerce site with continuous integration and deployment capabilities.
+
+## Best Practices and Additional Tips
+
+### Development Best Practices
+1. **Version Control**
+   - Always pull before pushing changes
+   - Write clear commit messages
+   - Use feature branches for new development
+   - Review code before merging
+
+2. **Security**
+   - Keep SSH keys secure
+   - Use strong passwords
+   - Regularly update dependencies
+   - Monitor server logs
+
+3. **Deployment**
+   - Test changes locally first
+   - Backup before major changes
+   - Use staging environment
+   - Monitor server resources
+
+4. **Code Quality**
+   - Follow HTML5 standards
+   - Validate HTML/CSS
+   - Optimize images
+   - Use semantic markup
+
+### AWS Best Practices
+1. **EC2 Management**
+   - Use appropriate instance types
+   - Monitor instance health
+   - Set up auto-scaling
+   - Configure security groups properly
+
+2. **Security**
+   - Use IAM roles
+   - Enable VPC
+   - Set up CloudWatch
+   - Regular security audits
+
+3. **Cost Optimization**
+   - Use spot instances when possible
+   - Monitor usage
+   - Set up billing alerts
+   - Clean up unused resources
+
+### Maintenance Tips
+1. **Regular Tasks**
+   - Update system packages
+   - Check server logs
+   - Monitor disk space
+   - Backup data regularly
+
+2. **Performance**
+   - Enable caching
+   - Optimize database queries
+   - Use CDN for static content
+   - Monitor response times
+
+3. **Documentation**
+   - Keep README updated
+   - Document configuration changes
+   - Maintain change log
+   - Update deployment procedures
 
 
