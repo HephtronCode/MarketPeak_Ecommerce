@@ -247,3 +247,30 @@ git commit -m "Added new feature or fixed bug"
 git push origin development
 ```
 ![](./img/35.png)
+
+The `git add .` command stages all changes in the current directory and its subdirectories for the next commit. The `git commit -m "Added new feature or fixed bug"` command creates a new commit with the staged changes and includes a message describing the changes made. The `git push origin development` command pushes the local `development` branch to the remote repository named `origin`.
+The `origin` is the default name for the remote repository that you cloned from GitHub. The `development` branch is the branch where you made your changes.
+
+***Note: In the above image, I was able to use two git commands in one line by separating them with a `&&` operator. This allows you to run multiple commands sequentially, where the second command will only execute if the first command is successful.***
+
+3. Create a pull request on GitHub to merge the changes from the `development` branch into the `main` branch. Go to your GitHub repository page, click on the "Pull requests" tab, and then click on the "New pull request" button. Select the `development` branch as the source and the `main` branch as the target. Click on "Create pull request" to submit it.
+
+![](./img/36.png)
+
+![](./img/37.png)
+
+![](./img/38.png)
+
+![](./img/39.png)
+
+![](./img/40.png)
+
+The above image shows the pull request page where you can review the changes made in the `development` branch before merging them into the `main` branch. You can add comments, request reviews from other team members, and discuss any issues related to the changes.
+Once you are satisfied with the changes, you can click on the "Merge pull request" button to merge the changes into the `main` branch.
+
+4. Checkout to the main branch and merge the changes from the `development` branch using the following command:
+```bash
+git checkout main
+git merge development
+```
+![](./img/41.png)
