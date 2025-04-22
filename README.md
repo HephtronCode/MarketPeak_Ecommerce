@@ -229,3 +229,21 @@ The `sudo systemctl reload apache2` command reloads the Apache web server config
 4. Open a web browser and enter the public IP address of your EC2 instance to access your deployed e-commerce site.
 
 ![](./img/33.png)
+
+## Continous Integration and Deployment (CI/CD) Workflow:
+1. Developing a new feature or fixing a bug in your local repository. Make changes to the code and test them locally.
+- Create a new branch called `development` using the following command:
+```bash
+git checkout -b development
+```
+![](./img/34.png)
+
+The `git checkout -b development` command creates a new branch called `development` and switches to that branch. This allows you to work on new features or bug fixes without affecting the main branch. In the above image, the caption 1 shows the previous branch name which is `main`, caption 2 shows the new branch name which is `development`.
+
+2. Make changes to the code and test them locally. Once you are satisfied with the changes, add and commit them using the following commands:
+```bash
+git add .
+git commit -m "Added new feature or fixed bug"
+git push origin development
+```
+![](./img/35.png)
