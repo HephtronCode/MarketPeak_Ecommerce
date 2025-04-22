@@ -274,3 +274,44 @@ git checkout main
 git merge development
 ```
 ![](./img/41.png)
+
+The `git checkout main` command switches to the `main` branch, and the `git merge development` command merges the changes from the `development` branch into the `main` branch. This allows you to incorporate the new feature or bug fix into the main codebase.
+
+***Note: It is important to always confirm that you have been able to switch branch successfully. You can do this by using the `git branch` command to list all branches and see which one you are currently on.***
+```bash
+git branch
+```
+## Deploy updates to the Production server on AWS:
+1. Pull the latest changes from the `main` branch on GitHub to your EC2 instance using the following command:
+```bash
+git pull origin main
+```
+![](./img/42.png)
+The `git pull origin main` command fetches the latest changes from the remote `main` branch on GitHub and merges them into your local `main` branch. This ensures that your local repository is up to date with the latest changes made by you or other team members.
+
+2. Relog the Apache web server to apply the changes using the following command:
+```bash
+sudo systemctl reload apache2
+```
+
+![](./img/43.png)
+
+The `sudo systemctl reload apache2` command reloads the Apache web server configuration without stopping the server. This allows you to apply changes to the configuration files or content without interrupting the service.
+
+3. In event where the changes are not reflecting, please note that you will have to copy the contents of your cloned repository to the Apache web server's root directory again using the following command:
+```bash
+sudo cp -r /path/to/your/cloned/repo/* /var/www/html/
+```
+![](./img/44.png)
+
+The `sudo cp -r /path/to/your/cloned/repo/* /var/www/html/` command copies all files and directories from your cloned repository to the Apache web server's root directory (`/var/www/html/`). The `-r` option is used to copy directories recursively, ensuring that all files and subdirectories are included in the copy.
+
+4. Reload the Apache web server to apply the changes using the following command:
+```bash
+sudo systemctl reload apache2
+```
+
+
+4. Open a web browser and enter the public IP address of your EC2 instance to access your updated e-commerce site.
+
+
